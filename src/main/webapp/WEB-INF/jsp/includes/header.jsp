@@ -15,11 +15,11 @@
     <%--BOOTSTRAP--%>
     <c:url value="webjars/bootstrap/3.3.4/js/bootstrap.min.js" var="bootstrapJS"/>
         <script src="${bootstrapJS}"></script>
-    <%--<c:url value="/webjars/bootstrap/3.3.4/css/bootstrap.min.css" var="bootstrapCSS" />--%>
-        <%--<link href="${bootstrapCSS}" rel="stylesheet" media="screen" />--%>
+    <c:url value="/webjars/bootstrap/3.3.4/css/bootstrap.min.css" var="bootstrapCSS" />
+        <link href="${bootstrapCSS}" rel="stylesheet" media="screen" />
 
     <%--Bootswatch--%>
-        <c:url value="/static/css/bootswatch_slate.css" var="bootstrapCSS" />
+        <c:url value="/static/css/bootswatch_cosmo.css" var="bootstrapCSS" />
         <link href="${bootstrapCSS}" rel="stylesheet" media="screen" />
 
     <%--CUSTOM JS--%>
@@ -31,6 +31,8 @@
         <link href="${bootstrapCUSTOM}" rel="stylesheet" media="screen" />
 
     <title>Aston Technologies HR Application</title>
+
+
 
 </head>
 

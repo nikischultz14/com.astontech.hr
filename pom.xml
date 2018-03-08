@@ -40,6 +40,20 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.7.0</version>
+        </dependency>
         <!--  ==============================================  -->
         <!--  ==============================================  -->
         <!--  DATABASE DEPENDANCIES  -->
@@ -69,7 +83,14 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>4.0.3.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-ldap</artifactId>
+            <version>4.0.3.RELEASE</version>
+        </dependency>
         <!--  ==============================================  -->
+
+
         <!--  ==============================================  -->
         <!--  WEB JARS [BOOTSTRAP CSS, JQUERY]  -->
         <!--  ==============================================  -->

@@ -34,14 +34,31 @@ public class AdminController {
     @RequestMapping(value = "/admin/element/add", method = RequestMethod.GET)
     public String adminElementGet(Model model) {
         model.addAttribute("elementVO", new ElementVO());
+        model.addAttribute("warningAlert", "visible");
         return "admin/element/element_add";
+
+
+
+
     }
 
     @RequestMapping(value = "/admin/element/add", method = RequestMethod.POST)
     public String adminElementPost(ElementVO elementVO, Model model) {
         elementVO.splitNewElementsIntoArray();
         logElementVO(elementVO);
+
         saveElementTypeAndElementsFromVO(elementVO);
+
+        boolean success = true;
+        if(success) {
+            model.addAttribute("successAlert", "visible");
+        }else {
+                model.addAttribute("errorAlert", "visible");
+            }
+
+
+            model.addAttribute("elementVO", new ElementVO());
+
 
         return "admin/element/element_add";
     }
@@ -67,15 +84,20 @@ public class AdminController {
     }
 
 
-
-
     @RequestMapping(value = "/admin/element/update", method = RequestMethod.POST)
     public String elementTypeUpdate(ElementType elementType, Model model,
                                     @RequestParam("inputNewElement") String newElement) {
         //notes: check if newElement(unbound text box) has a value, add it to the list
 
         if(!newElement.equals("")) {
-            elementType.getElementList().add(new Element(newElement));
+            if(elementType.getElementList() == null) {
+                List<Element> elementList = new ArrayList<>();
+                elementList.add(new Element(newElement));
+                elementType.setElementList(elementList);
+            } else {
+                elementType.getElementList().add(new Element(newElement));
+            }
+
         }
         //notes: iterate thru the list of elements
         for(int i=0; i<elementType.getElementList().size(); i++ ) {
@@ -86,10 +108,9 @@ public class AdminController {
             }
         }
 
-
-
-
         elementTypeService.saveElementType(elementType);
+
+
         return "redirect:/admin/element/edit/" + elementType.getId();
     }
 
